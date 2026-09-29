@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+
+/* Page Header */
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+
+/* Search Bar */
+
+.search-section {
+    display: flex;
+    gap: 10px;
+    padding: 25px;
+    justify-content: center;
+}
+
+.search-section input {
+    width: 400px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-section button {
+    padding: 12px 20px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    font-size: 16px;
+}
+
+
+/* Product Grid */
+
+.product-container {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    flex-direction: column;
+}
+
+
+/* Product Card */
+
+.product-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.product-card {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+
+/* Product Image */
+
+.product-image {
+    height: 150px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Product Information */
+
+.product-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    font-size: 18px;
+    font-weight: bold;
+}
