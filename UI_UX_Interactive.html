@@ -1,0 +1,1327 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>UI/UX Interactive Lab - Good UI vs Bad UI</title>
+<script src="https://cdn.tailwindcss.com"></script><script src="https://unpkg.com/lucide@latest"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@300;400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<style>body{background:#f5f7fb!important;color:#172033!important}.custom-scrollbar::-webkit-scrollbar{width:6px;height:6px}.custom-scrollbar::-webkit-scrollbar-track{background:#e5e7eb}.custom-scrollbar::-webkit-scrollbar-thumb{background:#a5b4fc;border-radius:4px}.bad-line-height{line-height:.85!important}.bad-touch-target{width:18px;height:18px;font-size:9px;padding:1px}</style></head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased">
+<header class="border-b border-slate-200 bg-white/90 backdrop-blur sticky top-0 z-40 shadow-sm"><div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"><div class="flex items-center gap-3"><div class="p-2.5 bg-blue-50 text-blue-600 rounded-xl border border-blue-100"><i data-lucide="layout-template" class="w-7 h-7"></i></div><div><h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 bg-clip-text text-transparent">UI/UX Interactive Lab</h1><p class="text-xs text-slate-500">So sánh trực quan & học mã nguồn Good UI vs Bad UI — 10 chủ đề</p></div></div><span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100 text-xs font-medium">● Tương tác trực tiếp</span></div></header>
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-6"><nav class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200 custom-scrollbar" id="scenario-tabs"><button onclick="switchTab(0)" class="tab-btn active px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-blue-600 text-white shadow-lg shadow-blue-600/20"><i data-lucide="mouse-pointer-click" class="w-4 h-4"></i>
+    1. Nút bấm & Phân cấp</button><button onclick="switchTab(1)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="text-cursor-input" class="w-4 h-4"></i>
+    2. Biểu mẫu & Form</button><button onclick="switchTab(2)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="compass" class="w-4 h-4"></i>
+    3. Điều hướng & Menu</button><button onclick="switchTab(3)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="layers" class="w-4 h-4"></i>
+    4. Kiểu chữ & Spacing</button><button onclick="switchTab(4)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="arrow-right-left" class="w-4 h-4"></i>
+    5. Thứ tự Nút & Modal</button><button onclick="switchTab(5)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="palette" class="w-4 h-4"></i>
+    6. Màu sắc & Accessibility</button><button onclick="switchTab(6)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="rows-3" class="w-4 h-4"></i>
+    7. Bố cục Form 1 cột</button><button onclick="switchTab(7)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="smartphone" class="w-4 h-4"></i>
+    8. Thumb Zone Mobile</button><button onclick="switchTab(8)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="shield-alert" class="w-4 h-4"></i>
+    9. Cửa sổ & Popup</button><button onclick="switchTab(9)" class="tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-100 border border-slate-200"><i data-lucide="type" class="w-4 h-4"></i>
+    10. Khóa Spam & Xác nhận</button></nav><section id="scenario-0" class="scenario-panel flex flex-col gap-6">
+            <div class="bg-blue-50/70 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-sm text-slate-600">
+                    <strong class="text-black">Nguyên tắc:</strong> Nút bấm phải thể hiện rõ mức độ quan trọng (Primary, Secondary, Danger) và có vùng tương tác đủ lớn (Touch Target &ge; 44px). Tránh đặt nút nguy hiểm ("Xóa") ngay cạnh nút hành động chính mà không có sự phân biệt thị giác.
+                </div>
+            </div>
+
+            <!-- Side by Side Sandbox -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-red-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-red-500/10 border-b border-red-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-xs text-red-400/80">Thiếu phân cấp, nút siêu nhỏ, dễ nhấn nhầm</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6 bg-white/50">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200/50 text-xs text-slate-500">
+                            Thử thách: Bạn muốn lưu cấu hình thông tin cá nhân. Hãy thử nhấn nút "Lưu" mà không nhấn nhầm nút "Xóa"!
+                        </div>
+                        
+                        <!-- Interactive Area BAD -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-4">
+                            <h3 class="text-sm font-medium text-slate-600">Chỉnh sửa hồ sơ</h3>
+                            <input type="text" value="Nguyen Van A" readonly class="w-full text-xs p-2 bg-slate-200 text-slate-600 rounded border border-slate-300 focus:outline-none">
+                            
+                            <!-- Bad Buttons Demo -->
+                            <div class="pt-2 flex items-center gap-0.5">
+                                <button onclick="triggerBadToast('Lưu')" class="bad-touch-target bg-slate-600 text-white hover:bg-slate-500 rounded-none border border-slate-500">
+                                    Lưu
+                                </button>
+                                <button onclick="triggerBadToast('Xóa')" class="bad-touch-target bg-slate-600 text-white hover:bg-slate-500 rounded-none border border-slate-500">
+                                    Xóa
+                                </button>
+                                <button onclick="triggerBadToast('Hủy')" class="bad-touch-target bg-slate-600 text-white hover:bg-slate-500 rounded-none border border-slate-500">
+                                    Hủy
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="bad-toast-1" class="hidden p-3 rounded text-xs bg-red-50 border border-red-200 text-red-700"></div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-xs text-emerald-400/80">Phân cấp rõ, Nút Xóa cách biệt & cảnh báo</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6 bg-white/50">
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200/50 text-xs text-slate-500">
+                            Giao diện rõ ràng: Nút chính màu nổi (Primary), nút hủy mờ nhẹ (Outline), nút xóa nguy hiểm tách riêng.
+                        </div>
+
+                        <!-- Interactive Area GOOD -->
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-4">
+                            <h3 class="text-sm font-semibold text-slate-700">Chỉnh sửa hồ sơ</h3>
+                            <input type="text" value="Nguyen Van A" readonly class="w-full text-sm px-3 py-2 bg-white text-slate-800 rounded-lg border border-slate-200 focus:outline-none">
+                            
+                            <!-- Good Buttons Demo -->
+                            <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-2">
+                                    <button onclick="triggerGoodToast('Lưu')" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm rounded-lg shadow-md shadow-blue-600/20 transition-all flex items-center gap-2 active:scale-95">
+                                        <i data-lucide="save" class="w-4 h-4"></i> Lưu thay đổi
+                                    </button>
+                                    <button onclick="triggerGoodToast('Hủy')" class="px-4 py-2.5 bg-slate-200 hover:bg-slate-600 text-slate-700 font-medium text-sm rounded-lg transition-all active:scale-95">
+                                        Hủy
+                                    </button>
+                                </div>
+                                <button onclick="triggerGoodToast('Xóa')" class="px-3 py-2.5 text-red-400 hover:text-red-300 hover:bg-red-500/10 font-medium text-xs rounded-lg transition-all flex items-center gap-1.5">
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Xóa tài khoản
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="good-toast-1" class="hidden p-3 rounded-lg text-xs bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center gap-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENARIO 2: FORMS -->
+        <section id="scenario-1" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50/70 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-sm text-slate-600">
+                    <strong class="text-black">Nguyên tắc:</strong> Form tốt cần có khoảng cách đủ thoáng, phản hồi lỗi ngay tại ô nhập (Inline validation), có nhãn rõ ràng và hỗ trợ tiện ích như xem/ẩn mật khẩu.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-red-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-red-500/10 border-b border-red-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-xs text-red-400/80">Báo lỗi chung chung, mật khẩu bị khóa không xem được</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-4 bg-white/50">
+                        <div id="bad-form-error" class="hidden p-2.5 text-xs bg-red-600 text-white font-bold rounded">
+                            LỖI: DỮ LIỆU KHÔNG HỢP LỆ! XIN KIỂM TRA LẠI CÁC TRƯỜNG.
+                        </div>
+
+                        <form onsubmit="handleBadFormSubmit(event)" class="space-y-1">
+                            <div>
+                                <span class="text-[10px] text-slate-500">Email/SĐT/Tên</span>
+                                <input type="text" id="bad-email" placeholder="nhập vô đây" class="w-full text-xs p-1 bg-slate-100 border border-slate-200 text-slate-700">
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500">Pass</span>
+                                <input type="password" id="bad-pass" value="123" class="w-full text-xs p-1 bg-slate-100 border border-slate-200 text-slate-700">
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500">Mã xác thực capcha</span>
+                                <input type="text" placeholder="mã" class="w-full text-xs p-1 bg-slate-100 border border-slate-200 text-slate-700">
+                            </div>
+                            <button type="submit" class="w-full mt-2 py-1 bg-gray-500 text-white text-xs font-bold hover:bg-gray-400">GỬI FORM</button>
+                        </form>
+                        <p class="text-[11px] text-slate-500 italic">* Lưu ý: Nhấn "Gửi" mới biết bị sai ở đâu, không biết mật khẩu gõ đúng hay sai.</p>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-xs text-emerald-400/80">Kiểm tra thời gian thực & Ẩn/Hiện Mật Khẩu</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-4 bg-white/50">
+                        <form onsubmit="handleGoodFormSubmit(event)" class="space-y-4">
+                            <!-- Email Field -->
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Địa chỉ Email</label>
+                                <div class="relative">
+                                    <input type="email" id="good-email" oninput="validateGoodEmail(this)" placeholder="vidu@domain.com" class="w-full text-sm px-3 py-2 pr-10 bg-white border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:border-blue-500 transition-colors">
+                                    <span id="good-email-status" class="absolute right-3 top-2.5 text-slate-500"></span>
+                                </div>
+                                <p id="good-email-msg" class="text-xs mt-1 text-slate-500">Nhập email để nhận thông báo xác nhận</p>
+                            </div>
+
+                            <!-- Password Field -->
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Mật khẩu</label>
+                                <div class="relative">
+                                    <input type="password" id="good-pass" oninput="validateGoodPass(this)" value="SecurePass123!" class="w-full text-sm px-3 py-2 pr-10 bg-white border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:border-blue-500 transition-colors">
+                                    <button type="button" onclick="togglePassVisibility()" class="absolute right-3 top-2.5 text-slate-500 hover:text-slate-700">
+                                        <i data-lucide="eye" id="eye-icon" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <p id="good-pass-msg" class="text-xs mt-1 text-emerald-400 flex items-center gap-1">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Mật khẩu mạnh (tối thiểu 8 ký tự)
+                                </p>
+                            </div>
+
+                            <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm rounded-lg shadow-md shadow-blue-600/20 transition-all">
+                                Đăng Nhập
+                            </button>
+                        </form>
+                        <div id="good-form-success" class="hidden p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-lg">
+                            🎉 Đăng nhập thành công! Hệ thống đang chuyển hướng...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENARIO 3: NAVIGATION -->
+        <section id="scenario-2" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50/70 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-sm text-slate-600">
+                    <strong class="text-black">Nguyên tắc:</strong> Biểu tượng điều hướng cần đi kèm nhãn chữ (Labels) để tránh đoán mò. Thanh tìm kiếm nên đặt ở vị trí nổi bật thay vì giấu sâu trong menu.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-red-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-red-500/10 border-b border-red-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-xs text-red-400/80">Icon lạ, không nhãn chữ, thanh tìm kiếm ẩn</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between bg-white/50">
+                        <!-- Mock Header Bad -->
+                        <div class="bg-slate-100 p-3 rounded-lg border border-slate-200 space-y-4">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <span class="text-xs font-bold text-slate-500">App Name</span>
+                                <!-- Hidden search inside burger menu -->
+                                <button onclick="alert('Thanh tìm kiếm bị giấu trong menu con cấp 3!')" class="p-1 text-slate-500 hover:text-slate-800">
+                                    <i data-lucide="align-justify" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-500 italic">Thử đoán xem các icon bên dưới điều hướng đi đâu?</p>
+                            <!-- Bad Bottom Nav -->
+                            <div class="bg-white p-2 rounded flex justify-around border border-slate-200">
+                                <button title="Chức năng ?" class="p-2 text-slate-500 hover:text-slate-800"><i data-lucide="box" class="w-5 h-5"></i></button>
+                                <button title="Chức năng ?" class="p-2 text-slate-500 hover:text-slate-800"><i data-lucide="flower2" class="w-5 h-5"></i></button>
+                                <button title="Chức năng ?" class="p-2 text-slate-500 hover:text-slate-800"><i data-lucide="cpu" class="w-5 h-5"></i></button>
+                                <button title="Chức năng ?" class="p-2 text-slate-500 hover:text-slate-800"><i data-lucide="aperture" class="w-5 h-5"></i></button>
+                            </div>
+                        </div>
+                        <div class="text-xs text-red-400 bg-red-50 p-3 rounded border border-red-900/50 mt-4">
+                            ⚠️ Người dùng mất trung bình 5-10 giây để đoán ý nghĩa của biểu tượng không có nhãn.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-xs text-emerald-400/80">Thanh tìm kiếm rõ ràng, Icon kèm nhãn chuẩn</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between bg-white/50">
+                        <!-- Mock Header Good -->
+                        <div class="bg-slate-100 p-3 rounded-xl border border-slate-200 space-y-4">
+                            <!-- Prominent Search Bar -->
+                            <div class="relative">
+                                <i data-lucide="search" class="w-4 h-4 absolute left-3 top-2.5 text-slate-500"></i>
+                                <input type="text" placeholder="Tìm kiếm sản phẩm, khóa học..." class="w-full text-xs pl-9 pr-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-700 focus:outline-none focus:border-blue-500">
+                            </div>
+
+                            <!-- Good Navigation Bar -->
+                            <div class="bg-white p-2 rounded-lg flex justify-around border border-slate-200/50">
+                                <button class="flex flex-col items-center gap-1 text-blue-400">
+                                    <i data-lucide="home" class="w-4 h-4"></i>
+                                    <span class="text-[10px] font-medium">Trang chủ</span>
+                                </button>
+                                <button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-700">
+                                    <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                                    <span class="text-[10px] font-medium">Cửa hàng</span>
+                                </button>
+                                <button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-700">
+                                    <i data-lucide="bell" class="w-4 h-4"></i>
+                                    <span class="text-[10px] font-medium">Thông báo</span>
+                                </button>
+                                <button class="flex flex-col items-center gap-1 text-slate-500 hover:text-slate-700">
+                                    <i data-lucide="user" class="w-4 h-4"></i>
+                                    <span class="text-[10px] font-medium">Tài khoản</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-xs text-emerald-400 bg-emerald-50 p-3 rounded-lg border border-emerald-900/50 mt-4">
+                            ✨ Thanh điều hướng chuẩn định hướng người dùng ngay lập tức mà không cần suy nghĩ.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SCENARIO 4: TYPOGRAPHY -->
+        <section id="scenario-3" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50/70 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-sm text-slate-600">
+                    <strong class="text-black">Nguyên tắc:</strong> Sử dụng tối đa 2 loại font chữ. Giữ khoảng cách dòng (line-height) khoảng 1.5 - 1.6 và bổ sung khoảng trắng (padding/margin) để mắt không bị mỏi.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-red-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-red-500/10 border-b border-red-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-xs text-red-400/80">3+ Font chữ rối mắt, Dòng dính sát, Màu chói</span>
+                    </div>
+                    <div class="p-2 bg-yellow-400 text-black flex-1 flex flex-col justify-between">
+                        <div>
+                            <h2 class="font-bad1 text-sm text-red-600 uppercase tracking-tighter mb-1">KHUYẾN MÃI CỰC KHỦNG DÀNH CHO BẠN!!!</h2>
+                            <p class="font-bad2 text-2xl text-blue-900 bad-line-height font-bold">
+                                MUA NGAY HÔM NAY ĐỂ NHẬN ƯU ĐÃI GIẢM GIÁ 50% CHO TẤT CẢ SẢN PHẨM TRÊN HỆ THỐNG CỦA CHÚNG TÔI KHÔNG THỂ BỎ QUA CƠ HỘI NÀY HÃY BẤM VÀO ĐÂY NGAY LẬP TỨC!
+                            </p>
+                        </div>
+                        <div class="mt-2 text-[9px] font-mono text-black font-extrabold bg-red-400 p-1">
+                            *Áp dụng có điều kiện phức tạp không ghi rõ tại đây.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-xs text-emerald-400/80">Font Inter hiện đại, Spacing thoáng, Đễ đọc</span>
+                    </div>
+                    <div class="p-6 bg-white flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <span class="px-2.5 py-1 text-[11px] font-semibold text-blue-400 bg-blue-500/10 border border-blue-200 rounded-full">
+                                Chương trình ưu đãi
+                            </span>
+                            <h2 class="text-lg font-bold text-slate-800 tracking-tight leading-snug">
+                                Ưu đãi đặc biệt giảm 50% hôm nay
+                            </h2>
+                            <p class="text-xs text-slate-500 leading-relaxed">
+                                Nâng cấp tài khoản ngay để trải nghiệm toàn bộ tính năng cao cấp cùng sự hỗ trợ 24/7 từ đội ngũ chuyên gia của chúng tôi.
+                            </p>
+                        </div>
+                        <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+                            <span>Áp dụng đến hết 31/12</span>
+                            <a href="#" class="text-blue-400 font-medium hover:underline flex items-center gap-1">Xem điều khoản <i data-lucide="arrow-right" class="w-3 h-3"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="scenario-4" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <strong class="text-black">Nguyên tắc:</strong> Nút "Xác nhận" nên nằm bên phải nút "Hủy" theo luồng mắt đọc tự nhiên (Trái → Phải). Nút đóng cửa sổ "X" bắt buộc phải nằm ở góc trên bên phải (Top-Right) để không làm gián đoạn tư duy người dùng.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-rose-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-rose-500/10 border-b border-rose-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-[11px] text-rose-400/80">Thứ tự nút ngược luồng, nút X ở dưới đáy</span>
+                    </div>
+                    
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6">
+                        <div class="text-xs text-slate-500 bg-white/50 p-3 rounded-lg border border-slate-200">
+                            Thử tương tác mô phỏng Hộp thoại bên dưới:
+                        </div>
+
+                        <!-- Mockup Modal Bad -->
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xl relative space-y-4">
+                            <div class="border-b border-slate-200 pb-2">
+                                <h3 class="text-sm font-semibold text-slate-700">Xác nhận thanh toán khóa học</h3>
+                            </div>
+                            <p class="text-xs text-slate-500">Bạn có chắc chắn muốn trừ số tiền 1.200.000đ từ ví điện tử?</p>
+                            
+                            <!-- Bad Buttons: Agree on Left, Cancel on Right. Close X at bottom left -->
+                            <div class="pt-2 flex items-center justify-between border-t border-slate-200">
+                                <button onclick="triggerBadModalToast('Đồng ý')" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded">
+                                    Đồng ý
+                                </button>
+                                <button onclick="triggerBadModalToast('Hủy')" class="px-3 py-1.5 bg-slate-100 text-slate-500 hover:bg-slate-200 text-xs rounded">
+                                    Hủy bỏ
+                                </button>
+                            </div>
+                            <div class="pt-1 flex items-center justify-start">
+                                <button onclick="triggerBadModalToast('Đóng X')" class="text-[10px] text-slate-500 hover:text-slate-600 underline flex items-center gap-1">
+                                    <i data-lucide="x" class="w-3 h-3"></i> Đóng cửa sổ này (Nút X đặt sai chỗ)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="bad-toast-0" class="hidden p-3 rounded-lg text-xs bg-rose-50 border border-rose-200 text-rose-700"></div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-[11px] text-emerald-400/80">Thứ tự nút chuẩn Trái → Phải, Nút X Top-Right</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6">
+                        <div class="text-xs text-slate-500 bg-white/50 p-3 rounded-lg border border-slate-200">
+                            Thử tương tác mô phỏng Hộp thoại bên dưới:
+                        </div>
+
+                        <!-- Mockup Modal Good -->
+                        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xl relative space-y-4">
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
+                                <h3 class="text-sm font-semibold text-slate-700">Xác nhận thanh toán khóa học</h3>
+                                <button onclick="triggerGoodModalToast('Đóng X')" class="p-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors" title="Đóng">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed">Bạn có chắc chắn muốn trừ số tiền 1.200.000đ từ ví điện tử?</p>
+                            
+                            <!-- Good Buttons: Cancel on Left, Confirm on Right -->
+                            <div class="pt-2 flex items-center justify-end gap-2.5">
+                                <button onclick="triggerGoodModalToast('Hủy')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-medium rounded-lg transition-colors">
+                                    Hủy bỏ
+                                </button>
+                                <button onclick="triggerGoodModalToast('Xác nhận')" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-lg shadow-md shadow-blue-600/20 transition-all active:scale-95">
+                                    Xác nhận thanh toán
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="good-toast-0" class="hidden p-3 rounded-lg text-xs bg-emerald-50 border border-emerald-200 text-emerald-700"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scenario-5" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <strong class="text-black">Nguyên tắc:</strong> Dùng màu đỏ cho các hành động nguy hiểm/không thể khôi phục. Đối với báo lỗi ô nhập liệu, không được phụ thuộc 100% vào màu viền (dễ thất bại với người mù màu) mà cần kết hợp **Màu sắc + Icon cảnh báo + Thông điệp văn bản**.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-rose-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-rose-500/10 border-b border-rose-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-[11px] text-rose-400/80">Nút xóa màu an toàn, Lỗi chỉ có viền mờ</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6">
+                        <div class="space-y-4">
+                            <!-- Destructive button colored safe green -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <label class="text-xs text-slate-600 font-medium">1. Hành động Xóa toàn bộ dữ liệu:</label>
+                                <div>
+                                    <!-- Bad: Green color for deletion -->
+                                    <button onclick="alert('Lỗi UX: Nút xóa màu Xanh lá khiến bạn tưởng là nút Lưu/An toàn!')" class="w-full py-2 bg-emerald-600 text-white font-medium text-xs rounded hover:bg-emerald-500">
+                                        Xóa vĩnh viễn tài khoản
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Input error: only subtle red border -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <label class="text-xs text-slate-600 font-medium">2. Ô nhập liệu đang bị lỗi:</label>
+                                <!-- Bad input: relies only on red border -->
+                                <input type="text" value="user-email-invalid" class="w-full text-xs p-2 bg-white text-slate-700 border border-rose-500/60 rounded focus:outline-none">
+                                <p class="text-[11px] text-slate-500 italic">* Người mù màu không phân biệt được ô này bị lỗi hay không vì không có icon hay chữ thông báo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-[11px] text-emerald-400/80">Màu Đỏ cảnh báo, Báo lỗi đa giác quan</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6">
+                        <div class="space-y-4">
+                            <!-- Destructive button colored dangerous RED -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <label class="text-xs text-slate-600 font-medium">1. Hành động Xóa toàn bộ dữ liệu:</label>
+                                <div>
+                                    <button onclick="triggerDestructiveToast()" class="w-full py-2.5 bg-rose-600/10 hover:bg-rose-600 text-rose-400 hover:text-white border border-rose-500/30 font-medium text-xs rounded-lg transition-all flex items-center justify-center gap-2">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                        Xóa vĩnh viễn tài khoản
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Input error: Red border + Icon + Text -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2">
+                                <label class="text-xs text-slate-600 font-medium">2. Ô nhập liệu đang bị lỗi:</label>
+                                <div class="relative">
+                                    <input type="text" value="user-email-invalid" class="w-full text-xs px-3 py-2 pr-9 bg-white text-slate-800 border border-rose-500 rounded-lg focus:outline-none">
+                                    <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-500 absolute right-3 top-2.5"></i>
+                                </div>
+                                <p class="text-xs text-rose-400 flex items-center gap-1 font-medium">
+                                    <span>⚠️</span> Email không hợp lệ (thiếu ký tự '@' và tên miền)
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="good-toast-color" class="hidden p-3 rounded-lg text-xs bg-rose-50 border border-rose-200 text-rose-700"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scenario-6" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <strong class="text-black">Nguyên tắc:</strong> Form thiết kế 1 cột giúp tầm mắt người dùng di chuyển mượt mà theo chiều dọc từ trên xuống. Không nên dùng Dropdown cho lựa chọn chỉ có 2-3 phương án (gây tốn cú nhấp chuột), thay vào đó hãy dùng Radio button / Segmented control.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-rose-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-rose-500/10 border-b border-rose-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-[11px] text-rose-400/80">Form 3 cột mắt nhảy zích-zắc, Dropdown thừa</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-4">
+                        <p class="text-xs text-slate-500">Bố cục 3 cột bắt mắt nhảy liên tục từ trái sang phải rồi xuống dòng:</p>
+                        
+                        <!-- Bad 3-column Grid Form -->
+                        <div class="grid grid-cols-3 gap-2 bg-white p-4 rounded-xl border border-slate-200 text-[11px]">
+                            <div>
+                                <label class="text-slate-500 block mb-1">Họ</label>
+                                <input type="text" placeholder="Nguyễn" class="w-full p-1.5 bg-white border border-slate-200 rounded text-slate-700">
+                            </div>
+                            <div>
+                                <label class="text-slate-500 block mb-1">Tên đệm</label>
+                                <input type="text" placeholder="Văn" class="w-full p-1.5 bg-white border border-slate-200 rounded text-slate-700">
+                            </div>
+                            <div>
+                                <label class="text-slate-500 block mb-1">Tên</label>
+                                <input type="text" placeholder="An" class="w-full p-1.5 bg-white border border-slate-200 rounded text-slate-700">
+                            </div>
+                            <div>
+                                <label class="text-slate-500 block mb-1">Tuổi</label>
+                                <input type="number" placeholder="25" class="w-full p-1.5 bg-white border border-slate-200 rounded text-slate-700">
+                            </div>
+                            <!-- Dropdown for binary choice -->
+                            <div class="col-span-2">
+                                <label class="text-slate-500 block mb-1">Giới tính (Dropdown 2 tùy chọn)</label>
+                                <select class="w-full p-1.5 bg-white border border-slate-200 rounded text-slate-700">
+                                    <option>Nam</option>
+                                    <option>Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="text-[11px] text-rose-400 bg-rose-50 p-2.5 rounded border border-rose-200">
+                            ⚠️ Mất thêm 2 cú nhấp chuột chỉ để chọn "Giới tính" trong Dropdown bị ẩn!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-[11px] text-emerald-400/80">Form 1 cột dọc thẳng, Segmented Pills</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-4">
+                        <p class="text-xs text-slate-500">Bố cục 1 cột dọc giúp điền form nhanh hơn 40%:</p>
+                        
+                        <!-- Good Single-column Form -->
+                        <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200 text-xs">
+                            <div>
+                                <label class="text-slate-600 font-medium block mb-1">Họ và Tên đầy đủ</label>
+                                <input type="text" placeholder="Nguyễn Văn An" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:border-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label class="text-slate-600 font-medium block mb-1.5">Giới tính (Segmented Pills 1-click)</label>
+                                <div class="grid grid-cols-3 gap-2 bg-white p-1 rounded-lg border border-slate-200">
+                                    <button type="button" onclick="selectGender(this)" class="gender-btn active py-1.5 text-center rounded-md font-medium text-xs bg-blue-600 text-white transition-all">
+                                        Nam
+                                    </button>
+                                    <button type="button" onclick="selectGender(this)" class="gender-btn py-1.5 text-center rounded-md font-medium text-xs text-slate-500 hover:text-slate-700 transition-all">
+                                        Nữ
+                                    </button>
+                                    <button type="button" onclick="selectGender(this)" class="gender-btn py-1.5 text-center rounded-md font-medium text-xs text-slate-500 hover:text-slate-700 transition-all">
+                                        Khác
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-[11px] text-black bg-emerald-950/30 p-2.5 rounded-lg border border-emerald-900/40">
+                            ✨ Tất cả tùy chọn hiển thị sẵn, chọn chỉ bằng 1 cú chạm đơn giản!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scenario-7" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <strong class="text-black">Nguyên tắc:</strong> Trên thiết bị di động, các nút bấm quan trọng nhất phải nằm ở **Vùng ngón tay cái (Thumb Zone)** – góc dưới màn hình. Logo chuẩn luôn ở góc trên bên trái (Top-Left) và bấm được về Trang chủ.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-rose-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-rose-500/10 border-b border-rose-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-[11px] text-rose-400/80">Logo góc phải, Nút Mua hàng ở góc trên quá xa</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col items-center justify-center">
+                        <!-- Mobile Device Mockup Bad -->
+                        <div class="w-64 h-96 bg-white rounded-3xl border-4 border-slate-200 p-3 flex flex-col justify-between relative shadow-2xl overflow-hidden">
+                            <!-- Header Bad: Logo Top Right non-clickable -->
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <!-- Hard to reach buy button at top left -->
+                                <button onclick="alert('Nút Đặt Hàng đặt quá cao, ngón tay cái không thể với tới khi dùng 1 tay!')" class="px-2 py-1 bg-rose-600 text-[10px] font-bold text-white rounded">
+                                    ĐẶT HÀNG
+                                </button>
+                                <span class="text-[10px] text-slate-500 font-bold">LOGO ➔</span>
+                            </div>
+
+                            <div class="text-center py-6 space-y-2">
+                                <div class="w-16 h-16 bg-white rounded-xl mx-auto border border-slate-200 flex items-center justify-center text-slate-600">
+                                    <i data-lucide="package" class="w-8 h-8"></i>
+                                </div>
+                                <p class="text-[11px] text-slate-600 font-semibold">Giày Sneaker Pro</p>
+                                <p class="text-[10px] text-emerald-400 font-bold">1.500.000đ</p>
+                            </div>
+
+                            <div class="p-2 bg-white rounded text-center">
+                                <span class="text-[9px] text-slate-500">Cạnh dưới không có nút bấm nào</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-[11px] text-emerald-400/80">Logo Top-Left, Nút bấm Sticky dính đáy</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col items-center justify-center">
+                        <!-- Mobile Device Mockup Good -->
+                        <div class="w-64 h-96 bg-white rounded-3xl border-4 border-slate-200 p-3 flex flex-col justify-between relative shadow-2xl overflow-hidden">
+                            <!-- Header Good: Logo Top Left clickable -->
+                            <div class="flex items-center justify-between border-b border-slate-200 pb-2">
+                                <a href="#" onclick="event.preventDefault(); alert('Chuyển hướng về Trang chủ!');" class="flex items-center gap-1 text-blue-400 font-bold text-[11px]">
+                                    <i data-lucide="store" class="w-3.5 h-3.5"></i> BrandLogo
+                                </a>
+                                <i data-lucide="shopping-cart" class="w-4 h-4 text-slate-500"></i>
+                            </div>
+
+                            <div class="text-center py-2 space-y-2">
+                                <div class="w-16 h-16 bg-white rounded-xl mx-auto border border-slate-200 flex items-center justify-center text-blue-400">
+                                    <i data-lucide="package" class="w-8 h-8"></i>
+                                </div>
+                                <p class="text-[11px] text-slate-700 font-semibold">Giày Sneaker Pro</p>
+                                <p class="text-[10px] text-emerald-400 font-bold">1.500.000đ</p>
+                            </div>
+
+                            <!-- Bottom Sticky CTA Button -->
+                            <div class="pt-2 border-t border-slate-200">
+                                <button onclick="triggerGoodMobileBuy()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-xl shadow-lg shadow-blue-600/30 flex items-center justify-center gap-1.5 active:scale-95 transition-all">
+                                    <i data-lucide="zap" class="w-3.5 h-3.5"></i> MUA NGAY (Dễ bấm bằng ngón cái)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENARIO 9: MODALS -->
+        <section id="scenario-8" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50/70 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-sm text-slate-600">
+                    <strong class="text-black">Nguyên tắc:</strong> Cửa sổ Pop-up phải dễ dàng đóng (Nút X rõ ràng, hỗ trợ phím ESC hoặc bấm ra ngoài), nội dung xúc tích và không đánh lừa người dùng (Dark Pattern).
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-red-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-red-500/10 border-b border-red-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-xs text-red-400/80">Dark Pattern, khó đóng, Nút X giấu kín</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col items-center justify-center gap-4 bg-white/50 relative">
+                        <button onclick="openBadModal()" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white font-bold text-xs rounded shadow">
+                            Mở Popup Quảng Cáo (Bad UI)
+                        </button>
+                        <p class="text-xs text-slate-500 text-center">Thử xem bạn tốn bao lâu để tìm cách đóng Popup này!</p>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-xs text-emerald-400/80">Nút đóng to rõ, hỗ trợ Overlay Click</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col items-center justify-center gap-4 bg-white/50">
+                        <button onclick="openGoodModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-lg shadow-md shadow-blue-600/20 transition-all">
+                            Mở Popup Thông Báo (Good UI)
+                        </button>
+                        <p class="text-xs text-slate-500 text-center">Popup lịch sự, dễ tương tác và đóng nhanh chóng.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scenario-9" class="scenario-panel hidden flex flex-col gap-6">
+            <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-blue-400 shrink-0 mt-0.5"></i>
+                <div class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <strong class="text-black">Nguyên tắc:</strong> Ngăn chặn lỗi thao tác người dùng bằng cách **Vô hiệu hóa nút bấm ngay lập tức** sau khi click để tránh bị trùng lệnh/trừ tiền nhiều lần. Khi thực hiện hành động nguy hiểm (như Xóa tài khoản), yêu cầu người dùng gõ xác nhận để tránh bấm nhầm.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- BAD UI -->
+                <div class="bg-white rounded-2xl border border-rose-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-rose-500/10 border-b border-rose-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+                            <i data-lucide="x-circle" class="w-4 h-4"></i> Bad UI ❌
+                        </span>
+                        <span class="text-[11px] text-rose-400/80">Cho bấm liên tục (Spam), Xóa không xác nhận</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6">
+                        <!-- Interactive Spam Payment -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                            <label class="text-xs font-semibold text-slate-700 block">1. Thanh toán trực tuyến (Thử bấm nhanh liên tục):</label>
+                            <button onclick="handleBadSpamClick()" class="w-full py-2.5 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-lg shadow">
+                                Bấm Thanh Toán 500.000đ (Không bị khóa)
+                            </button>
+                            <div id="bad-spam-counter" class="text-xs text-rose-400 font-mono font-bold bg-rose-50 p-2 rounded border border-rose-900">
+                                Số lệnh đã gửi: 0 lần (Số tiền bị trừ: 0đ)
+                            </div>
+                        </div>
+
+                        <!-- One click instant delete -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                            <label class="text-xs font-semibold text-slate-700 block">2. Thao tác Xóa tài liệu:</label>
+                            <button onclick="alert('🔴 ĐÃ XÓA SẠCH DỮ LIỆU! Hành động diễn ra ngay lập tức mà không hỏi lại người dùng!')" class="w-full py-2 bg-slate-100 text-rose-400 hover:bg-rose-950/50 text-xs font-medium rounded-lg border border-rose-200">
+                                Xóa dự án (Bấm 1 click là mất ngay)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOOD UI -->
+                <div class="bg-white rounded-2xl border border-emerald-500/30 overflow-hidden flex flex-col shadow-xl">
+                    <div class="bg-emerald-500/10 border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Good UI ✅
+                        </span>
+                        <span class="text-[11px] text-emerald-400/80">Khóa nút + Spinner, Modal gõ chữ xác nhận</span>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between gap-6">
+                        <!-- Safe Protected Payment -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                            <label class="text-xs font-semibold text-slate-700 block">1. Thanh toán trực tuyến (Có chống Spam):</label>
+                            <button id="good-pay-btn" onclick="handleGoodPayClick()" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-lg shadow-md shadow-blue-600/20 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="credit-card" class="w-4 h-4"></i>
+                                <span id="good-pay-text">Thanh Toán 500.000đ</span>
+                            </button>
+                            <div id="good-pay-status" class="text-xs text-slate-500 bg-white p-2 rounded border border-slate-200">
+                                Trạng thái: Sẵn sàng nhận lệnh
+                            </div>
+                        </div>
+
+                        <!-- Safe Delete Modal Trigger -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-3">
+                            <label class="text-xs font-semibold text-slate-700 block">2. Thao tác Xóa tài liệu quan trọng:</label>
+                            <button onclick="openSafeDeleteModal()" class="w-full py-2 bg-rose-600/10 hover:bg-rose-600 text-rose-400 hover:text-white border border-rose-500/30 font-medium text-xs rounded-lg transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="shield-alert" class="w-4 h-4"></i> Xóa dự án (Bật Modal bảo vệ)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</main>    <!-- BAD MODAL OVERLAY -->
+    <div id="bad-modal-overlay" class="hidden fixed inset-0 z-50 bg-slate-900/60 flex items-center justify-center p-4">
+        <div class="bg-yellow-300 text-black p-8 rounded-none max-w-sm w-full relative border-4 border-red-600 shadow-2xl">
+            <!-- Tiny tricky close button placed awkwardly -->
+            <button onclick="closeBadModal()" class="absolute -top-2 -right-2 bg-gray-400 text-[8px] text-gray-700 w-3 h-3 flex items-center justify-center rounded-none hover:bg-red-600">
+                x
+            </button>
+            <h3 class="font-bad1 text-red-600 text-xs mb-2">BẠN ĐÃ TRÚNG THƯỞNG 100.000.000đ!</h3>
+            <p class="text-xs mb-4 font-bold">Hãy nhấp vào nút bên dưới ngay để nhận thưởng trong 5 giây nếu không sẽ bị hủy!</p>
+            <button onclick="alert('Đã vô tình bấm vào quảng cáo!')" class="w-full py-3 bg-red-600 text-white font-extrabold text-sm hover:bg-red-700">
+                NHẬN QUÀ TỰ ĐỘNG
+            </button>
+            <div class="mt-3 text-center">
+                <button onclick="closeBadModal()" class="text-[9px] text-slate-600 underline">
+                    Không, tôi muốn tiếp tục nghèo khổ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOD MODAL OVERLAY -->
+    <div id="good-modal-overlay" onclick="closeGoodModalOnOverlay(event)" class="hidden fixed inset-0 z-50 bg-white/80 backdrop-blur-sm flex items-center justify-center p-4 transition-all">
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl max-w-md w-full relative shadow-2xl space-y-4 animate-in fade-in zoom-in duration-200">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div class="flex items-center gap-2 text-emerald-400">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    <h3 class="text-base font-semibold text-slate-800">Xác nhận đơn hàng</h3>
+                </div>
+                <button onclick="closeGoodModal()" class="p-1 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Bạn chuẩn bị hoàn tất đơn hàng thiết kế UI/UX Kit. Email xác nhận cùng thông tin hóa đơn sẽ được gửi đến hộp thư của bạn.
+            </p>
+            <div class="flex items-center justify-end gap-3 pt-2">
+                <button onclick="closeGoodModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-medium rounded-lg transition-colors">
+                    Hủy bỏ
+                </button>
+                <button onclick="closeGoodModal(); alert('Xác nhận thành công!')" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium rounded-lg shadow-md shadow-blue-600/20 transition-all">
+                    Xác nhận mua
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAFE DELETE MODAL -->
+    <div id="safe-delete-modal" class="hidden fixed inset-0 z-50 bg-white/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 p-6 rounded-2xl max-w-md w-full relative shadow-2xl space-y-4 animate-in fade-in zoom-in duration-150">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div class="flex items-center gap-2 text-rose-400 font-semibold text-sm">
+                    <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                    <h3>Xác nhận xóa vĩnh viễn dự án</h3>
+                </div>
+                <button onclick="closeSafeDeleteModal()" class="p-1 text-slate-500 hover:text-slate-800 rounded-lg">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Hành động này <strong class="text-rose-400">không thể khôi phục</strong>. Tất cả dữ liệu thuộc dự án này sẽ bị xóa khỏi máy chủ.
+            </p>
+
+            <div class="space-y-1.5">
+                <label class="text-[11px] text-slate-500 block">Vui lòng gõ chữ <strong class="text-white">DELETE</strong> để xác nhận:</label>
+                <input type="text" id="delete-confirm-input" oninput="checkDeleteMatch(this)" placeholder="Nhập DELETE..." class="w-full text-xs px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:border-rose-500">
+            </div>
+
+            <div class="flex items-center justify-end gap-2.5 pt-2">
+                <button onclick="closeSafeDeleteModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-medium rounded-lg">
+                    Hủy bỏ
+                </button>
+                <button id="final-delete-btn" disabled onclick="executeSafeDelete()" class="px-4 py-2 bg-slate-100 text-slate-500 font-medium text-xs rounded-lg cursor-not-allowed transition-all">
+                    Xóa dự án
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script>let currentTab=0,currentCodeMode='bad',spamCount=0;const codeRepository=[
+            // Scenario 0: Buttons
+            {
+                bad: `<!-- BAD UI: Buttons without hierarchy & bad touch target -->
+<div class="flex items-center gap-0.5">
+  <!-- Small touch target (18px), identical colors, dangerous layout -->
+  <button style="width:18px; height:18px; font-size:9px;" class="bg-slate-600 text-slate-600">
+    Lưu
+  </button>
+  <button style="width:18px; height:18px; font-size:9px;" class="bg-slate-600 text-slate-600">
+    Xóa
+  </button>
+</div>`,
+                good: `<!-- GOOD UI: Clear visual hierarchy & safe touch target -->
+<div class="flex items-center justify-between gap-3">
+  <div class="flex items-center gap-2">
+    <!-- Primary Button: High contrast, 44px+ height -->
+    <button class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm rounded-lg shadow-md shadow-blue-600/20">
+      Lưu thay đổi
+    </button>
+    <!-- Secondary Button -->
+    <button class="px-4 py-2.5 bg-slate-200 hover:bg-slate-600 text-slate-700 font-medium text-sm rounded-lg">
+      Hủy
+    </button>
+  </div>
+  <!-- Danger Action isolated -->
+  <button class="px-3 py-2.5 text-red-400 hover:bg-red-500/10 font-medium text-xs rounded-lg">
+    Xóa tài khoản
+  </button>
+</div>`
+            },
+            // Scenario 1: Forms
+            {
+                bad: `<!-- BAD UI: Crowded form, no inline validation, hidden password -->
+<form onsubmit="handleSubmit()">
+  <span>Email/SĐT</span>
+  <input type="text" class="w-full text-xs p-1 bg-slate-100">
+  
+  <span>Pass</span>
+  <!-- No view toggle for password -->
+  <input type="password" value="123" class="w-full text-xs p-1 bg-slate-100">
+  
+  <button type="submit">GỬI FORM</button>
+</form>`,
+                good: `<!-- GOOD UI: Spacing, Inline Validation & Password Toggle -->
+<form class="space-y-4">
+  <div>
+    <label class="block text-xs font-medium text-slate-600 mb-1">Địa chỉ Email</label>
+    <input type="email" placeholder="vidu@domain.com" 
+           class="w-full text-sm px-3 py-2 bg-white border border-slate-200 rounded-lg focus:border-blue-500">
+    <p class="text-xs text-slate-500 mt-1">Nhập email để nhận xác nhận</p>
+  </div>
+
+  <div>
+    <label class="block text-xs font-medium text-slate-600 mb-1">Mật khẩu</label>
+    <div class="relative">
+      <input type="password" id="passInput" class="w-full text-sm px-3 py-2 pr-10 bg-white border border-slate-200 rounded-lg">
+      <button type="button" onclick="togglePass()" class="absolute right-3 top-2.5 text-slate-500">
+        <i data-lucide="eye"></i>
+      </button>
+    </div>
+  </div>
+</form>`
+            },
+            // Scenario 2: Navigation
+            {
+                bad: `<!-- BAD UI: Mystery icons without text labels, hidden search -->
+<div class="bg-white p-2 flex justify-around">
+  <!-- Icons with no text label leave users guessing -->
+  <button><i data-lucide="box"></i></button>
+  <button><i data-lucide="flower2"></i></button>
+  <button><i data-lucide="cpu"></i></button>
+</div>`,
+                good: `<!-- GOOD UI: Prominent search & Nav icons with clear labels -->
+<div class="space-y-3">
+  <!-- Search bar easily accessible at top -->
+  <div class="relative">
+    <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-slate-500"></i>
+    <input type="text" placeholder="Tìm kiếm..." class="w-full pl-9 py-2 bg-white rounded-lg text-xs">
+  </div>
+
+  <!-- Bottom Nav with icons + labels -->
+  <div class="flex justify-around bg-white p-2 rounded-lg">
+    <button class="flex flex-col items-center gap-1 text-blue-400">
+      <i data-lucide="home" class="w-4 h-4"></i>
+      <span class="text-[10px]">Trang chủ</span>
+    </button>
+    <button class="flex flex-col items-center gap-1 text-slate-500">
+      <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+      <span class="text-[10px]">Cửa hàng</span>
+    </button>
+  </div>
+</div>`
+            },
+            // Scenario 3: Modals
+            {
+                bad: `<!-- BAD UI: Aggressive dark pattern popup with tiny close button -->
+<div class="fixed inset-0 bg-slate-900/60 flex items-center justify-center">
+  <div class="bg-yellow-300 p-8 relative border-4 border-red-600">
+    <!-- Tiny hard-to-click close button -->
+    <button class="absolute -top-2 -right-2 text-[8px] bg-gray-400">x</button>
+    <h3>BẠN ĐÃ TRÚNG THƯỞNG!</h3>
+    <button class="w-full py-3 bg-red-600 text-white">NHẬN QUÀ TỰ ĐỘNG</button>
+  </div>
+</div>`,
+                good: `<!-- GOOD UI: Accessible, clean modal with backdrop blur -->
+<div class="fixed inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-white border border-slate-200 p-6 rounded-2xl max-w-md w-full">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <h3 class="font-semibold text-slate-800">Xác nhận đơn hàng</h3>
+      <!-- Visible, large close button -->
+      <button class="p-1 text-slate-500 hover:text-slate-800"><i data-lucide="x"></i></button>
+    </div>
+    <p class="text-xs text-slate-600 my-4">Nội dung giải thích rõ ràng...</p>
+    <div class="flex justify-end gap-3">
+      <button class="px-4 py-2 bg-slate-100 text-slate-600 rounded-lg">Hủy</button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">Xác nhận</button>
+    </div>
+  </div>
+</div>`
+            },
+            // Scenario 4: Typography
+            {
+                bad: `<!-- BAD UI: Too many fonts, line-height = 0.85, high contrast yellow/neon -->
+<div class="bg-yellow-400 p-2">
+  <!-- Comic font, all caps, zero spacing -->
+  <h2 style="font-family:'Press Start 2P';" class="text-red-600 uppercase">KHUYẾN MÃI CỰC KHỦNG!</h2>
+  <p style="font-family:'Caveat'; line-height:0.85;" class="text-2xl text-blue-900">
+    MUA NGAY HÔM NAY ĐỂ NHẬN ƯU ĐÃI GIẢM GIÁ 50%...
+  </p>
+</div>`,
+                good: `<!-- GOOD UI: Modern sans-serif, 1.6 line height, clean hierarchy -->
+<div class="bg-white p-6 space-y-3">
+  <span class="px-2.5 py-1 text-[11px] font-semibold text-blue-400 bg-blue-500/10 rounded-full">Chương trình ưu đãi</span>
+  <h2 class="text-lg font-bold text-slate-800 tracking-tight">Ưu đãi đặc biệt giảm 50%</h2>
+  <p class="text-xs text-slate-500 leading-relaxed">
+    Nâng cấp tài khoản ngay để trải nghiệm toàn bộ tính năng cao cấp...
+  </p>
+</div>`
+            },
+            // Scenario 0: Button Order & Modal Close
+            {
+                bad: `<!-- BAD UI: Agreement on left, Cancel on right, Close X at bottom -->
+<div class="modal">
+  <h3>Xác nhận thanh toán</h3>
+  <!-- Buttons reversed from standard reading flow -->
+  <div class="actions">
+    <button class="bg-blue-600">Đồng ý</button>
+    <button class="bg-gray-800">Hủy bỏ</button>
+  </div>
+  <!-- Close button hidden at the bottom left -->
+  <button class="text-xs underline">Đóng X</button>
+</div>`,
+                good: `<!-- GOOD UI: Cancel on left, Confirm on right, Close X top-right -->
+<div class="modal relative">
+  <div class="header flex justify-between">
+    <h3>Xác nhận thanh toán</h3>
+    <!-- Close icon positioned in top-right corner -->
+    <button class="p-1 hover:bg-slate-100"><i data-lucide="x"></i></button>
+  </div>
+  <p>Nội dung xác nhận...</p>
+  <!-- Standard left-to-right reading flow -->
+  <div class="actions flex justify-end gap-2">
+    <button class="bg-slate-100 text-slate-600">Hủy bỏ</button>
+    <button class="bg-blue-600 text-white font-medium">Xác nhận thanh toán</button>
+  </div>
+</div>`
+            },
+            // Scenario 1: Color Semantics & Accessibility
+            {
+                bad: `<!-- BAD UI: Green delete button & border-only input error -->
+<!-- Dangerous action colored safe green -->
+<button class="bg-emerald-600">Xóa vĩnh viễn tài khoản</button>
+
+<!-- Error relies only on color border (Inaccessible to colorblind users) -->
+<input type="text" class="border border-red-500">`,
+                good: `<!-- GOOD UI: Red warning color & Error with Icon + Text -->
+<!-- Destructive action clearly colored red -->
+<button class="bg-rose-600/10 text-rose-400 border border-rose-500/30">
+  <i data-lucide="trash-2"></i> Xóa vĩnh viễn tài khoản
+</button>
+
+<!-- Accessible error message: Color + Warning Icon + Text -->
+<div class="relative">
+  <input type="text" class="border-rose-500 text-slate-800">
+  <i data-lucide="alert-triangle" class="text-rose-500"></i>
+</div>
+<p class="text-rose-400 text-xs">⚠️ Email không hợp lệ (thiếu '@' và tên miền)</p>`
+            },
+            // Scenario 2: Form Layout 1-Column
+            {
+                bad: `<!-- BAD UI: 3-column Z-pattern form & Dropdown for binary choice -->
+<div class="grid grid-cols-3 gap-2">
+  <input placeholder="Họ">
+  <input placeholder="Tên đệm">
+  <input placeholder="Tên">
+  <!-- Dropdown forces 2 extra clicks for only 2 options -->
+  <select><option>Nam</option><option>Nữ</option></select>
+</div>`,
+                good: `<!-- GOOD UI: Clean 1-column form & Segmented pill selection -->
+<div class="space-y-3">
+  <label>Họ và Tên đầy đủ</label>
+  <input class="w-full" placeholder="Nguyễn Văn An">
+  
+  <label>Giới tính</label>
+  <!-- 1-click segmented radio pills -->
+  <div class="grid grid-cols-3 gap-2">
+    <button class="bg-blue-600 text-white">Nam</button>
+    <button class="text-slate-500">Nữ</button>
+    <button class="text-slate-500">Khác</button>
+  </div>
+</div>`
+            },
+            // Scenario 3: Mobile Thumb Zone
+            {
+                bad: `<!-- BAD UI: Logo on top-right, Buy button at top-left -->
+<div class="mobile-header">
+  <!-- Primary CTA placed in worst thumb zone -->
+  <button class="bg-rose-600">ĐẶT HÀNG</button>
+  <span>LOGO</span>
+</div>`,
+                good: `<!-- GOOD UI: Clickable logo top-left, Sticky bottom CTA -->
+<div class="mobile-header flex justify-between">
+  <!-- Logo top-left clickable home -->
+  <a href="/" class="text-blue-400 font-bold">BrandLogo</a>
+</div>
+
+<!-- Primary Action Button Sticky at Bottom (Thumb Reach Zone) -->
+<div class="sticky-bottom border-t border-slate-200">
+  <button class="w-full bg-blue-600 text-white shadow-lg">
+    MUA NGAY (Dễ bấm bằng ngón cái)
+  </button>
+</div>`
+            },
+            // Scenario 4: Anti-spam & Safe Delete
+            {
+                bad: `<!-- BAD UI: Button allows repeat clicks & Instant unconfirmed deletion -->
+<!-- Unprotected button causes double payments -->
+<button onclick="payMoney()">Bấm Thanh Toán (Không bị khóa)</button>
+
+<!-- Direct delete with no confirmation -->
+<button onclick="deleteProject()">Xóa dự án (Bấm 1 click mất ngay)</button>`,
+                good: `<!-- GOOD UI: Immediate disable + spinner & Type-to-confirm modal -->
+<!-- Disabled immediately on click -->
+<button id="payBtn" onclick="handlePay(this)" class="bg-blue-600">
+  <span id="btnText">Thanh Toán 500.000đ</span>
+</button>
+
+<!-- Confirmation modal requiring "DELETE" text -->
+<input type="text" oninput="checkMatch(this)" placeholder="Nhập DELETE...">
+<button id="deleteBtn" disabled class="bg-slate-100 cursor-not-allowed">Xóa dự án</button>`
+            }];function switchTab(index) {
+            currentTab = index;
+            document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+                if (i === index) {
+                    btn.className = 'tab-btn active px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-blue-600 text-white shadow-lg shadow-blue-600/20';
+                } else {
+                    btn.className = 'tab-btn px-4 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center gap-2 whitespace-nowrap bg-slate-100/60 text-slate-500 hover:text-slate-700 hover:bg-slate-100';
+                }
+            });
+
+            document.querySelectorAll('.scenario-panel').forEach((panel, i) => {
+                if (i === index) {
+                    panel.classList.remove('hidden');
+                } else {
+                    panel.classList.add('hidden');
+                }
+            });
+
+            updateCodeDisplay();
+        }function triggerBadToast(action) {
+            const el = document.getElementById('bad-toast-1');
+            el.classList.remove('hidden');
+            if (action === 'Xóa') {
+                el.innerHTML = '⚠️ <strong>CẢNH BÁO!</strong> Bạn vừa vô tình bấm nhầm nút "XÓA" do vị trí nút quá sát nhau và kích thước quá nhỏ!';
+            } else {
+                el.innerHTML = `Thao tác "${action}" đã kích hoạt. Rất khó bấm trúng do diện tích bấm chỉ 18px!`;
+            }
+        }function triggerGoodToast(action) {
+            const el = document.getElementById('good-toast-color');
+            el.classList.remove('hidden');
+            if (action === 'Xóa') {
+                el.innerHTML = '🔴 <strong>Nút Nguy Hiểm:</strong> Đã mở hộp thoại xác nhận xóa tài khoản an toàn.';
+            } else {
+                el.innerHTML = `✨ <strong>Thao tác mượt mà:</strong> Bạn đã chọn thành công "${action}" với cảm giác bấm tự nhiên.`;
+            }
+        }function handleBadFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('bad-form-error').classList.remove('hidden');
+        }function handleGoodFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('good-form-success').classList.remove('hidden');
+        }function validateGoodEmail(input) {
+            const status = document.getElementById('good-email-status');
+            const msg = document.getElementById('good-email-msg');
+            if (input.value.includes('@') && input.value.includes('.')) {
+                status.innerHTML = '<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>';
+                msg.className = "text-xs mt-1 text-emerald-400";
+                msg.innerText = "Email hợp lệ";
+            } else {
+                status.innerHTML = '<i data-lucide="alert-circle" class="w-4 h-4 text-red-400"></i>';
+                msg.className = "text-xs mt-1 text-red-400";
+                msg.innerText = "Vui lòng nhập định dạng email đúng (ví dụ: name@domain.com)";
+            }
+            lucide.createIcons();
+        }function validateGoodPass(input) {
+            const msg = document.getElementById('good-pass-msg');
+            if (input.value.length >= 8) {
+                msg.className = "text-xs mt-1 text-emerald-400 flex items-center gap-1";
+                msg.innerHTML = '<i data-lucide="check" class="w-3 h-3"></i> Mật khẩu đạt độ an toàn chuẩn';
+            } else {
+                msg.className = "text-xs mt-1 text-red-400 flex items-center gap-1";
+                msg.innerHTML = '<i data-lucide="x" class="w-3 h-3"></i> Mật khẩu quá ngắn (Cần tối thiểu 8 ký tự)';
+            }
+            lucide.createIcons();
+        }function togglePassVisibility() {
+            const input = document.getElementById('good-pass');
+            const icon = document.getElementById('eye-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.setAttribute('data-lucide', 'eye-off');
+            } else {
+                input.type = 'password';
+                icon.setAttribute('data-lucide', 'eye');
+            }
+            lucide.createIcons();
+        }function openBadModal() {
+            document.getElementById('bad-modal-overlay').classList.remove('hidden');
+        }function closeBadModal() {
+            document.getElementById('bad-modal-overlay').classList.add('hidden');
+        }function openGoodModal() {
+            document.getElementById('good-modal-overlay').classList.remove('hidden');
+        }function closeGoodModal() {
+            document.getElementById('good-modal-overlay').classList.add('hidden');
+        }function closeGoodModalOnOverlay(e) {
+            if (e.target.id === 'good-modal-overlay') {
+                closeGoodModal();
+            }
+        }function triggerBadModalToast(action) {
+            const toast = document.getElementById('bad-toast-0');
+            toast.classList.remove('hidden');
+            toast.innerHTML = `⚠️ Thao tác "${action}": Thứ tự nút này ngược hướng tư duy chuẩn, dễ gây thao tác nhầm lẫn!`;
+        }function triggerGoodModalToast(action) {
+            const toast = document.getElementById('good-toast-0');
+            toast.classList.remove('hidden');
+            toast.innerHTML = `✨ Thao tác "${action}": Vị trí nút hợp lý theo luồng mắt đọc Trái → Phải chuẩn UI/UX!`;
+        }function triggerDestructiveToast() {
+            const toast = document.getElementById('good-toast-1');
+            toast.classList.remove('hidden');
+            toast.innerHTML = `🔴 **Màu sắc chuẩn:** Nút màu đỏ cảnh báo rõ ràng đây là hành động nguy hiểm không thể đảo ngược.`;
+        }function selectGender(btn) {
+            document.querySelectorAll('.gender-btn').forEach(b => {
+                b.className = 'gender-btn py-1.5 text-center rounded-md font-medium text-xs text-slate-500 hover:text-slate-700 transition-all';
+            });
+            btn.className = 'gender-btn active py-1.5 text-center rounded-md font-medium text-xs bg-blue-600 text-white transition-all shadow';
+        }function triggerGoodMobileBuy() {
+            alert('🎉 Thành công! Nút bấm ở cạnh dưới màn hình giúp bạn đặt hàng nhanh chóng bằng 1 ngón tay cái!');
+        }function handleBadSpamClick() {
+            spamCount++;
+            const counter = document.getElementById('bad-spam-counter');
+            counter.innerText = `Số lệnh đã gửi: ${spamCount} lần (Số tiền bị trừ: ${(spamCount * 500000).toLocaleString('vi-VN')}đ)`;
+        }function handleGoodPayClick() {
+            const btn = document.getElementById('good-pay-btn');
+            const text = document.getElementById('good-pay-text');
+            const status = document.getElementById('good-pay-status');
+
+            btn.disabled = true;
+            btn.className = 'w-full py-2.5 bg-slate-100 text-slate-500 font-medium text-xs rounded-lg cursor-not-allowed flex items-center justify-center gap-2';
+            text.innerHTML = '<span class="inline-block animate-spin mr-1">⏳</span> Đang xử lý thanh toán...';
+            status.innerHTML = '🔒 <strong class="text-blue-400">Đã khóa nút:</strong> Hệ thống đang xử lý lệnh duy nhất, chống trừ tiền trùng.';
+
+            setTimeout(() => {
+                text.innerText = 'Thanh toán thành công ✓';
+                status.innerHTML = '🎉 <strong class="text-emerald-400">Thành công:</strong> Đơn hàng đã xử lý an toàn!';
+            }, 2500);
+        }function openSafeDeleteModal() {
+            document.getElementById('safe-delete-modal').classList.remove('hidden');
+        }function closeSafeDeleteModal() {
+            document.getElementById('safe-delete-modal').classList.add('hidden');
+            document.getElementById('delete-confirm-input').value = '';
+            checkDeleteMatch(document.getElementById('delete-confirm-input'));
+        }function checkDeleteMatch(input) {
+            const finalBtn = document.getElementById('final-delete-btn');
+            if (input.value.trim() === 'DELETE') {
+                finalBtn.disabled = false;
+                finalBtn.className = 'px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs rounded-lg transition-all shadow-lg shadow-rose-600/30';
+            } else {
+                finalBtn.disabled = true;
+                finalBtn.className = 'px-4 py-2 bg-slate-100 text-slate-500 font-medium text-xs rounded-lg cursor-not-allowed transition-all';
+            }
+        }function executeSafeDelete() {
+            closeSafeDeleteModal();
+            alert('🎉 An toàn tuyệt đối! Bạn đã xác nhận thành công từ khóa "DELETE" trước khi xóa dữ liệu.');
+        }function toggleCodeTab(mode) {
+            currentCodeMode = mode;
+            const badBtn = document.getElementById('code-btn-bad');
+            const goodBtn = document.getElementById('code-btn-good');
+
+            if (mode === 'bad') {
+                badBtn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-red-500/20 text-red-400 border border-red-500/30';
+                goodBtn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-500 hover:text-slate-700';
+            } else {
+                goodBtn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+                badBtn.className = 'px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-500 hover:text-slate-700';
+            }
+
+            updateCodeDisplay();
+        }function updateCodeDisplay() {
+            const codeContainer = document.getElementById('code-display');
+            const rawCode = codeRepository[currentTab][currentCodeMode];
+            codeContainer.textContent = rawCode;
+            Prism.highlightElement(codeContainer);
+        }function copyCurrentCode() {
+            const codeText = codeRepository[currentTab][currentCodeMode];
+            
+            // Clipboard copy with textarea fallback
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(codeText);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = codeText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+            }
+
+            const btnText = document.getElementById('copy-btn-text');
+            btnText.innerText = 'Đã sao chép! ✓';
+            setTimeout(() => {
+                btnText.innerText = 'Sao chép Code';
+            }, 2000);
+        }lucide.createIcons();updateCodeDisplay();</script></body></html>
